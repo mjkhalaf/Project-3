@@ -41,11 +41,24 @@ public class DateTimeOne extends MesoDateTimeOneAbstract
 	@Override
 	public void dateTimeOfOtherCity() {
 		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("k:mm");
+		Calendar cal = new GregorianCalendar();
+		
+		int hours = cal.getTime().getHours();
+		Date GMT = new Date();
+		GMT.setHours(hours + 5);
+		Date BST = new Date();
+		BST.setHours(hours + 11);
+		
+		System.out.println("Time on Server: " + dateFormat.format(cal.getTime()));
+		System.out.println("GMT: " + dateFormat.format(GMT));
+		System.out.println("BST (90E): " + dateFormat.format(BST));
+		System.out.println("CST (90W): " + dateFormat.format(cal.getTime()));
 	}
 
 	@Override
 	public void dateTimeDifferentZone() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
