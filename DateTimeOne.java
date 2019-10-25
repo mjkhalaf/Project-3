@@ -2,12 +2,15 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class DateTimeOne extends MesoDateTimeOneAbstract
 {
 	private int allowedValueForSecond =55;
 	private long milliSeconds;
 	private int seconds;
+	private HashMap<String, String> dates;
 	
 	public DateTimeOne() {
 		
@@ -58,7 +61,24 @@ public class DateTimeOne extends MesoDateTimeOneAbstract
 
 	@Override
 	public void dateTimeDifferentZone() {
+		this.dates = new HashMap<>();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy k:mm");
+		Calendar cal = new GregorianCalendar();
 		
+		int hours = cal.getTime().getHours();
+		Date GMT = new Date();
+		GMT.setHours(hours + 5);
+		Date BST = new Date();
+		BST.setHours(hours + 11);
+		
+		
+		this.dates.put("GMT", dateFormat.format(GMT));
+		this.dates.put("BST", dateFormat.format(BST));
+		this.dates.put("CST", dateFormat.format(cal.getTime()));
+		
+		for(Entry<String, String> key : this.dates.entrySet()) {
+			System.out.println(key.getKey() +": " +key.getValue());
+		}
 		
 	}
 
