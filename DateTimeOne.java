@@ -87,7 +87,7 @@ public class DateTimeOne extends MesoDateTimeOneAbstract
 	@Override
 	public void timeZoneHashMap() {
 		
-HashMap<String, String> zones = new HashMap<>();
+		HashMap<String, String> zones = new HashMap<>();
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy k:mm");
 		Calendar cal = new GregorianCalendar();
@@ -116,6 +116,51 @@ HashMap<String, String> zones = new HashMap<>();
 		for(String key : letterSortedkeys) {
 			System.out.println(key +" " + zones.get(key));
 		}
+		HashMap<String, String> zones2 = new HashMap<>();
+		SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd'T'k:mm");
+		 zones2.put(dateFormat.format(BST), format2.format(BST));
+		 zones2.put(dateFormat.format(AST), format2.format(AST));
+		 zones2.put(dateFormat.format(cal.getTime()), format2.format(cal.getTime()));
+		 zones2.put(dateFormat.format(GMT), format2.format(GMT));
+		 zones2.put(dateFormat.format(ZST), format2.format(ZST));
+		
+		System.out.println("Print Style 2:");
+		
+		for(Entry<String, String> key : zones2.entrySet()) {
+			System.out.println(key.getKey());
+		}
+		 ArrayList<String> thirdMapKeys = new ArrayList<>();
+			
+		 thirdMapKeys.add(dateFormat.format(GMT));
+		 thirdMapKeys.add(dateFormat.format(AST));
+		 thirdMapKeys.add(dateFormat.format(ZST));
+		 thirdMapKeys.add(dateFormat.format(cal.getTime()));
+		 thirdMapKeys.add(dateFormat.format(BST));
+			
+		 Collections.sort(thirdMapKeys);
+		 System.out.println("Print Style 3:");
+		 for (String key: thirdMapKeys) {
+			 System.out.println(key);
+		 }
+		 
+		 
+		 
+		 
+		 System.out.println("Print Style 4:");
+		 for(Entry<String, String> key : zones2.entrySet()) {
+				System.out.println(key.getValue());
+			}
+		 ArrayList<String> forthMapKeys = new ArrayList<>();
+		 
+		 for(Entry<String, String> key : zones2.entrySet()) {
+			 forthMapKeys.add(key.getKey());
+		 }
+		 Collections.sort(forthMapKeys);
+		 System.out.println("Print Style 5:");
+		 for (String key: forthMapKeys) {
+			 System.out.println(zones2.get(key));
+		 }
+		
 		
 		
 	}
