@@ -1,5 +1,7 @@
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -77,14 +79,44 @@ public class DateTimeOne extends MesoDateTimeOneAbstract
 		this.dates.put("CST", dateFormat.format(cal.getTime()));
 		
 		for(Entry<String, String> key : this.dates.entrySet()) {
-			System.out.println(key.getKey() +": " +key.getValue());
+			System.out.println(key.getKey() +": " + key.getValue());
 		}
 		
 	}
 
 	@Override
 	public void timeZoneHashMap() {
-		// TODO Auto-generated method stub
+		
+HashMap<String, String> zones = new HashMap<>();
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy k:mm");
+		Calendar cal = new GregorianCalendar();
+		
+		int hours = cal.getTime().getHours();
+		Date GMT = new Date();
+		GMT.setHours(hours + 5);
+		Date BST = new Date();
+		BST.setHours(hours + 1);
+		Date AST = new Date("10/01/2020 19:59");
+		Date ZST = new Date("11/05/2018 19:59");
+		
+		zones.put("AST", dateFormat.format(AST));
+		zones.put("BST", dateFormat.format(BST));
+		zones.put("CST", dateFormat.format(cal.getTime()));
+		zones.put("GMT", dateFormat.format(GMT));
+		zones.put("ZST", dateFormat.format(ZST));
+		
+		ArrayList<String> letterSortedkeys = new ArrayList<>();
+		for (String key: zones.keySet()) {
+			letterSortedkeys.add(key);
+		}
+		Collections.sort(letterSortedkeys);
+		
+		System.out.println("Print Style 1:");
+		for(String key : letterSortedkeys) {
+			System.out.println(key +" " + zones.get(key));
+		}
+		
 		
 	}
    
