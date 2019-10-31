@@ -1,6 +1,6 @@
 # Project-3
 For this project, DateTimeOne class was first writte. The default constructor declares a new calander and prints out the current date and time
-at different time Zones. SleepforFiveSecond methods increases the current milliSeconds by 5000, and a getter method for the seconds was
+at different time Zones. SleepforFiveSecond methods increases the current seconds gotten from the calander using simpledate formatting by 5, and a getter method for the seconds was
 wrtitten as well. dateTimeDifferentZone puts the date and time at different time zones in a hashmap.and prints them out.TimeZoneHashMap puts 
 the dates and times mentioned into different hashmaps and arraylist to be printed in the different styles mentioned in the prompt. After that 
 dateTimeTwo class was written. The default constructor here gets the tenth and the eighteenth day of the current month. daysOfMonth methods 
